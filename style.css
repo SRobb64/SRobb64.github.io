@@ -1,25 +1,142 @@
-         /* portfolio styles */
-         .content h1 {
-            color: black;
-        }
+body {
+    background: rgb(224, 106, 37);
+    color: #460303;
+    padding: 10px;
+    font-family: arial;
+    margin: 200px;
+}
+#all-contents {
+    max-width: 800px;
+    margin: auto;
+}
 
-        #portfolio {
-            list-style-type: none;
-            padding-left: 0;
-        }
+/* navigation menu */
+nav {
+    background: rgb(179, 50, 11);
+    margin: 0 auto;
+    display: flex;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+nav h1 {
+    display: flex;
+    align-items: center;
+    color: #460303;
+    flex: 1;
+    margin: 0;
+}
+nav ul {
+    list-style-image: none;
+}
+nav li {
+    display: inline-block;
+    padding: 0 10px;
+}
+nav a {
+    text-decoration: none;
+    color: #460303;
+}
 
-        #portfolio li {
-            background: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
+/* main container area beneath menu */
+main {
+    background: rgb(179, 50, 11);
+    display: flex;
+    border-radius: 20px
+}
+.sidebar {
+    margin-right: 25px;
+    padding: 10px;
+}
+.sidebar img {
+    width: 200px;
+    margin: 10px
+}
+.content {
+    flex: 1;
+    padding: 15px;
+}
+h2, h3 {
+    margin: 0px;
+}
 
-        #portfolio li:hover {
-            background: #eee;
-        }
 
-        #portfolio a {
-            text-decoration: none;
-            color: #454545;
-        }
+
+
+/* portfolio styles */
+.content h1 {
+    color: black;
+}
+
+#portfolio {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#portfolio li {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#portfolio li:hover {
+    background: #eee;
+}
+
+#portfolio a {
+    text-decoration: none;
+    color: #454545;
+}
+
+
+/* responsive web design */
+@media screen and (min-width: 120px) and (max-width: 1080px) {
+main {
+height: 100ch;
+zoom: 1.5;
+display: grid;
+}
+
+h1 {
+font-size: 44px;
+}
+
+h2 {
+font-size: 42px;
+}
+
+h3 {
+font-size: 36px;
+}
+
+#all-contents {
+height: 100ch;
+margin: none;
+}
+
+a {
+font-size: 42px;
+}
+
+.sidebar {
+margin-right: 0px;
+justify-content: center;
+align-items: center;
+}
+
+.sidebar-img {
+width: 100%;
+}
+
+p,
+li {
+font-size: 24px;
+}
+
+.content {
+align-content: center;
+justify-content: center;
+}
+}
