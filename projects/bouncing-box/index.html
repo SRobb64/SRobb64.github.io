@@ -63,13 +63,15 @@
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
 			//////////////////////////////////////////////////////////////////
 			
-			// TODO 2 - Variable declarations 
-			var positionX = 0;
+			// TODO 2 - Variable declarations
+			var randNum = Math.random() * 2000;
+			var positionX = randNum;
 			var points = 0;
 			var speed = 10;
 			var positionY;
-			var speedY = 10
+			var speedY = 10;
 			var boardHeight = jQuery(window).height(); 
+			var clicks = 0;
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -101,7 +103,13 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				positionX = 0
+				clicks = clicks + 1
+				if (clicks >= 3){
+					clicks = 0
+					speed = speed + 2
+					speedY = speedY + 4
+				}
+				positionX = randNum
 				positionY = 0
 				points = points + 1
 				changeBoxText(points)
