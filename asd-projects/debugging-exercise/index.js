@@ -63,11 +63,11 @@ $(document).ready(function(){
     
     // this generates an id for a circle given the circle's number
     function getId(number){
-        return "circle" + number;
+        return "circle" + number; 
     }
     
     // this adds a circle into the HTML
-    function CircleElement(circle, id){
+    function addNewCircleElement(circle, id){
     
         // this creates the HTML for a new circle element 
         var $circle = $('<div>').attr('id', id)
@@ -140,7 +140,7 @@ $(document).ready(function(){
     
     // this redraws the circle's position on the screen
     function updateCircleOnScreen(circle){
-        maxCircles = 0;
+        maxCircles = 10;
     
         // these lines redraw the circle's position
         $(circle.id).css('left', circle.x);
@@ -148,3 +148,4 @@ $(document).ready(function(){
     }
     
     });
+    
