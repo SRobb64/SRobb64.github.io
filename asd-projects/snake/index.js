@@ -94,17 +94,15 @@ function checkForNewDirection(event) {
   // FILL IN THE REST
   if (activeKey === KEY.RIGHT) {
     snake.head.direction = "right";
-  }
-
+  } 
   if (activeKey === KEY.UP) {
     snake.head.direction = "up";
-  }
-
+  } 
   if (activeKey === KEY.DOWN) {
     snake.head.direction = "down";
   }
 
-  console.log(snake.head.direction);     // uncomment me!
+  // console.log(snake.head.direction);     // uncomment me!
 }
 
 function moveSnake() {
@@ -127,6 +125,16 @@ function moveSnake() {
   HINT: The snake's head will need to move forward 1 square based on the value
   of snake.head.direction which may be one of "left", "right", "up", or "down"
   */
+  if (snake.head.direction === "left") {
+    snake.head.column = snake.head.column - 1;
+  } else if (snake.head.direction === "right") {
+    snake.head.column = snake.head.column + 1;
+  } else if (snake.head.direction === "up") {
+    snake.head.row = snake.head.row - 1;
+  } else if (snake.head.direction === "down") {
+    snake.head.row = snake.head.row + 1;
+  }
+  repositionSquare(snake.head);
 }
 
 function hasHitWall() {
@@ -136,8 +144,17 @@ function hasHitWall() {
   
   HINT: What will the row and column of the snake's head be if this were the case?
   */
-
-  return false;
+  if (snake.head.column < 0) {
+    return true;
+  } else if (snake.head.column > 20) {
+    return true;
+  } else if (snake.head.row < 0) {
+    return true;
+  } else if (snake.head.row > 20) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function hasCollidedWithApple() {
@@ -147,8 +164,15 @@ function hasCollidedWithApple() {
   
   HINT: Both the apple and the snake's head are aware of their own row and column
   */
-
-  return false;
+  if (snake.head.column === apple.column) {
+    if (snake.head.row === apple.row) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
 }
 
 function handleAppleCollision() {
