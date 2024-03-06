@@ -115,7 +115,19 @@ function moveSnake() {
   column/row properties. 
   
   */
+  for (var i = snake.body.length - 1; i > 0; i--) {
+    var snakeSquare = snake.body[i];
 
+    var nextSnakeSquare = snake.body[i-1];
+    var nextRow = nextSnakeSquare.row;
+    var nextColumn = nextSnakeSquare.column;
+    var nextDirection = nextSnakeSquare.direction;
+
+    snakeSquare.direction = nextDirection;
+    snakeSquare.row = nextRow;
+    snakeSquare.column = nextColumn;
+    repositionSquare(snakeSquare);
+  }
   //Before moving the head, check for a new direction from the keyboard input
   checkForNewDirection();
 
@@ -193,9 +205,19 @@ function handleAppleCollision() {
   If the tail is moving "down", place the next snakeSquare above it.
   etc...
   */
-  var row = 0;
-  var column = 0;
 
+  var row = snake.tail.row;
+  var column = snake.tail.column;
+
+  if (snake.tail.direction === "left") {
+    column += 1
+  } else if (snake.tail.direction === "right") {
+    column -= 1
+  } else if (snake.tail.direction === "up") {
+    row -= 1
+  } else if (snake.tail.direction === "down") {
+    row += 1
+  }
   // code to determine the row and column of the snakeSquare to add to the snake
 
   makeSnakeSquare(row, column);
