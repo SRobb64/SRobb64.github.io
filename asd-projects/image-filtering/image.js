@@ -63,7 +63,6 @@ function rgbStringToArray(rgbStr) {
   rgbArr[RED] = Number(rgbArr[RED]);
   rgbArr[GREEN] = Number(rgbArr[GREEN]);
   rgbArr[BLUE] = Number(rgbArr[BLUE]);
-
   return rgbArr;
 }
 
