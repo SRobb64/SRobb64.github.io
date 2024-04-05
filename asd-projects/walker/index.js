@@ -41,8 +41,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem(handleKeyDown)
-    redrawGameItem(handleKeyDown)
+    repositionGameItem()
+    redrawGameItem()
 
   }
   
@@ -73,13 +73,13 @@ function runProgram(){
 
   function repositionGameItem (event) {
     if (event.which === KEY.LEFT) {
-      return walker.posX -= speedX;
+      walker.posX -= speedX;
     } else if (event.which === KEY.RIGHT) {
-      return walker.posX += speedX;
+      walker.posX += speedX;
     } else if (event.which === KEY.UP) {
-      return walker.posY -= speedY;
+      walker.posY -= speedY;
     } else if (event.which === KEY.DOWN) {
-      return walker.posY += speedY;
+      walker.posY += speedY;
     }
   }
 
