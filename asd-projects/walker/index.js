@@ -16,7 +16,6 @@ function runProgram(){
     RIGHT: 39,
     UP: 38,
     DOWN: 40,
-    ENTER: 13,
   }
 
   // Game Item Objects
@@ -31,7 +30,7 @@ function runProgram(){
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-
+  $(document).on('keyup', handleKeyUp);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -43,12 +42,13 @@ function runProgram(){
   function newFrame() {
     repositionGameItem()
     redrawGameItem()
+    wallCollision()
   }
   
   /* 
   Called in response to events.
   */
-  function handleKeyDown(event) {
+  function handleKeyDown (event) {
     if (event.which === KEY.LEFT) {
       walker.speedX = -5
     } else if (event.which === KEY.RIGHT) {
@@ -60,18 +60,31 @@ function runProgram(){
     }
   }
 
+  function handleKeyUp (event) {
+    walker.speedX = 0;
+    walker.speedY = 0;
+  }
+
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
   function repositionGameItem () {
-    walker.posX += speedX;
-    walker.posY += speedY;
+    walker.posX += walker.speedX;
+    walker.posY += walker.speedY;
   }
 
   function redrawGameItem () {
     $("#walker").css("left", walker.posX);
     $("#walker").css("top", walker.posY);
+  }
+
+  function wallCollision () {
+    if (walker.posX >= $("#board").width() || walker.posX <= 0) {
+      walker.posX -= walker.speedX;
+    } else if (walker.posY >= $("#board").height() || walker.posY <= 0) {
+      walker.posY -= walker.speedY;
+    }
   }
 
 
