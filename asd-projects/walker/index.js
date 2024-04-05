@@ -10,6 +10,7 @@ function runProgram(){
   // Constant Variables
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+
   var KEY = {
     LEFT: 37,
     RIGHT: 39,
@@ -17,7 +18,6 @@ function runProgram(){
     DOWN: 40,
     ENTER: 13,
   }
-  
 
   // Game Item Objects
 
@@ -43,26 +43,19 @@ function runProgram(){
   function newFrame() {
     repositionGameItem()
     redrawGameItem()
-
   }
   
   /* 
   Called in response to events.
   */
   function handleKeyDown(event) {
-    if (event.which === KEY.ENTER) {
-      console.log("enter pressed")
-    } else if (event.which === KEY.LEFT) {
-      console.log("left pressed")
+    if (event.which === KEY.LEFT) {
       walker.speedX = -5
     } else if (event.which === KEY.RIGHT) {
-      console.log("right pressed")
       walker.speedX = 5
     } else if (event.which === KEY.UP) {
-      console.log("up pressed")
       walker.speedY = -5
     } else if (event.which === KEY.DOWN) {
-      console.log("down pressed")
       walker.speedY = 5
     }
   }
@@ -71,28 +64,14 @@ function runProgram(){
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  function repositionGameItem (event) {
-    if (event.which === KEY.LEFT) {
-      walker.posX -= speedX;
-    } else if (event.which === KEY.RIGHT) {
-      walker.posX += speedX;
-    } else if (event.which === KEY.UP) {
-      walker.posY -= speedY;
-    } else if (event.which === KEY.DOWN) {
-      walker.posY += speedY;
-    }
+  function repositionGameItem () {
+    walker.posX += speedX;
+    walker.posY += speedY;
   }
 
-  function redrawGameItem (event) {
-    if (event.which === KEY.LEFT) {
-      $("#walker").css("left", walker.posX);
-    } else if (event.which === KEY.RIGHT) {
-      $("#walker").css("right", walker.posX);
-    } else if (event.which === KEY.UP) {
-      $("#walker").css("up", walker.posY);
-    } else if (event.which === KEY.DOWN) {
-      $("#walker").css("down", walker.posY);
-    }
+  function redrawGameItem () {
+    $("#walker").css("left", walker.posX);
+    $("#walker").css("top", walker.posY);
   }
 
 
